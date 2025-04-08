@@ -1,0 +1,114 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 6%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 47 65% 52%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 47 65% 52%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 47 65% 52%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-luxury text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+  h1 {
+    @apply text-4xl leading-tight lg:text-5xl;
+  }
+  h2 {
+    @apply text-3xl leading-tight lg:text-4xl;
+  }
+  h3 {
+    @apply text-2xl leading-tight;
+  }
+  p {
+    @apply leading-relaxed;
+  }
+  section {
+    @apply py-16 md:py-24;
+  }
+}
+
+@layer components {
+  .text-shine {
+    @apply bg-clip-text text-transparent bg-[linear-gradient(90deg,theme(colors.gold.DEFAULT),theme(colors.gold.light),theme(colors.gold.DEFAULT))] bg-300% animate-background-shine;
+  }
+  
+  .icon-box {
+    @apply inline-flex items-center justify-center w-12 h-12 rounded-full bg-luxury-100 text-gold;
+  }
+  
+  .glass-card {
+    @apply rounded-xl border border-white/10 bg-white/5 backdrop-blur-lg shadow-sm;
+  }
+  
+  .glass-card-dark {
+    @apply rounded-xl border border-luxury-100 bg-luxury-50/30 backdrop-blur-md shadow-md;
+  }
+  
+  .animated-border {
+    @apply relative;
+  }
+  
+  .animated-border::after {
+    content: '';
+    @apply absolute block w-0 h-0.5 transition-all duration-500 bg-gold bottom-0 left-0;
+  }
+  
+  .animated-border:hover::after {
+    @apply w-full;
+  }
+  
+  .button-shine {
+    @apply relative overflow-hidden;
+  }
+  
+  .button-shine::before {
+    content: '';
+    @apply absolute top-0 left-[-100%] w-[100%] h-full bg-white/10 transform skew-x-[-25deg] transition-all duration-700;
+  }
+  
+  .button-shine:hover::before {
+    @apply left-[150%];
+  }
+  
+  .content-section {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
