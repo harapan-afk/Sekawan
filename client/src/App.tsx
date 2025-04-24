@@ -34,7 +34,10 @@ function App() {
     setIsMobile(isMobileDevice);
   }, []);
 
-  if (isMobile === false) {
+  const isLoginOrAdmin =
+    location.pathname.startsWith("/admin") || location.pathname === "/login";
+
+  if (!isLoginOrAdmin && isMobile === false) {
     return (
       <div className="flex flex-col items-center justify-center h-screen bg-luxury text-center px-4">
         <div className="flex items-center justify-center bg-gold/10 p-6 rounded-full shadow-lg mb-6">
@@ -53,7 +56,7 @@ function App() {
     );
   }
 
-  if (isMobile === null) return null;
+  if (isMobile === null && isLoginOrAdmin) return null;
 
   return (
     <QueryClientProvider client={queryClient}>
